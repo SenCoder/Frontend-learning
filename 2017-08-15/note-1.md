@@ -17,6 +17,8 @@
 
 ## 实现
 
+这里，我们基于 gorilla 工具链实现简单的 cookie 存储, golang 标准库中已经实现了对 cookie 的支持。
+
 ```go
 mx.HandleFunc("/cookies/write", cookieWriteHandler(formatter)).Methods("GET")
 mx.HandleFunc("/cookies/read", cookieReadHandler(formatter)).Methods("GET")

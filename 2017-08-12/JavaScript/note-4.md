@@ -103,7 +103,7 @@ windown.onload = function() {
 }
 ```
 
-### 节点
+### 节点解析
 
 ```js
 windown.onload = function() {
@@ -121,3 +121,55 @@ windown.onload = function() {
 	box.childNodes[0].nodeValue="<strong>Hello</strong>"
 }
 ```
+
+```js
+windown.onload = function() {
+	var box = document.getElementById('idvalue')
+	alert(box.childNodes[0].nodeValue)
+	alert(box.firstChild.nodeValue)
+	alert(box.lastChild.nodeValue)
+	alert(box.ownerDocument === document)
+	alert(box.ownerDocument.nodeName)
+	alert(box.ownerDocument.nodeType)
+	
+	alert(box.parentNode)
+	alert(box.firstChild.nextSibling)
+	alert(box.lasttChild.previousSibling)
+	
+	alert(box.attributes)
+	alert(box.attributes[0].nodeName)
+	alert(box.attributes[0].nodeType)
+	alert(box.attributes['title'].nodeValue)
+}
+```
+
+```html
+<div id="box">
+	<p>Text 1</p>
+	<p>Text 2</p>
+	<p>Text 3</p>
+</div>
+```
+
+```js
+windown.onload = function() {
+	var box = document.getElementById('box')
+	alert(box.childNodes.length)	//对上面的html，由于浏览器对空白字符的处理不同，该结果在不同浏览器中会不同
+}
+
+function filterWhiteNode(nodes) {
+	var ret f= [];
+	for (var i = 0; i < nodes.length; i ++) {
+		if (nodes[i].nodeType == 3 && /^\s+$/.test(nodes[i].nodeValue)) {
+			continue;
+		} else {
+			ret.push(nodes[i])
+		}
+	}
+	return ret
+}
+
+// 我们也可以通过移除空白节点的方法达到过滤空白字符的目的
+```
+
+### 节点操作

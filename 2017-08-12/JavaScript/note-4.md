@@ -46,3 +46,78 @@ Document Object Model (DOM)是HTML和XML文档的编程接口。它提供了上�
 ## DOM与BOM的关系
 DOM与BOM的关系：BOM包含DOM。
 document对象是BOM的一部分，同时也是HTML DOM的HTMLDocument对象的一种表现形式，反过来说，它也是XML DOM Document对象。JavaScript中的大部分处理DOM的过程都利用document对象，所以我们访问文档需要使用BOM提供的这个入口。
+
+
+## DOM基础
+
+### 标签获取
+
+- `document.getElementById()`
+- `document.getElementsByTagName()`
+- `document.getElementsByName()`
+- `getAttribute()`
+- `setAttribute()`
+- `removeAttribute()`
+
+```html
+<div id="box" title="Title" class="Box" style="color:red">Test Div</div>
+```
+
+```js
+// onload 事件触发
+windown.onload = function() {
+	var box = document.getElementById('idvalue')
+	alert(box)
+	alert(box.innerHTML)
+	//获取通用属性的值
+	alert(box.id)
+	alert(box.title)
+	alert(box.style)
+	alert(box.color)
+	alert(box.className)
+	//自定义属性按此方法获取会有兼容性问题
+	//使用getAttribute()获取
+}
+```
+
+```js
+windown.onload = function() {
+	var box = document.getElementById('idvalue')
+	box.innerHTML = "<strong> Test Div </strong>"
+}
+```
+
+```html
+<ul>
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+<ul>
+```
+
+```js
+windown.onload = function() {
+	var li = document.getElementsByTagName("li")
+	alert(li.length)
+	alert(document.getElementsByTagName("*").length)
+}
+```
+
+### 节点
+
+```js
+windown.onload = function() {
+	var box = document.getElementById('idvalue')
+	alert(box.nodeName)		// TageName
+	alert(box.nodeType)		// 节点类型：元素节点/文本节点/属性节点
+	alert(box.nodeValue)	
+}
+```
+
+```js
+windown.onload = function() {
+	var box = document.getElementById('idvalue')
+	box.innerHtml = "<strong>Hello</strong>"
+	box.childNodes[0].nodeValue="<strong>Hello</strong>"
+}
+```

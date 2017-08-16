@@ -171,5 +171,3 @@ function filterWhiteNode(nodes) {
 
 // 我们也可以通过移除空白节点的方法达到过滤空白字符的目的
 ```
-
-### 节点操作

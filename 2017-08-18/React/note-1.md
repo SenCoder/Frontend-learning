@@ -302,7 +302,7 @@ ReactDOM.render(
 React.createClass({
   propTypes: {
     // 可以声明 prop 为指定的 JS 基本数据类型，默认情况，这些数据是可选的
-   optionalArray: React.PropTypes.array,
+    optionalArray: React.PropTypes.array,
     optionalBool: React.PropTypes.bool,
     optionalFunc: React.PropTypes.func,
     optionalNumber: React.PropTypes.number,

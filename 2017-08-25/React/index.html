@@ -1,0 +1,170 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React 实例</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+
+    <!-- <script type="text/babel">
+        class Clock extends React.Component {
+
+            constructor(...args) {
+                // 必须调用 super() 方法
+                super(...args)
+                // 初始化可以直接赋值
+                // this.state = {display: 'block'}
+                this.state = {h:0, m:0, s:0};
+
+                var _this = this;
+                setInterval(function() {
+                    //可以发现这里的this指向window
+                    // console.log(this)
+                    _this.tick()
+                }, 1000)
+            }
+
+            tick() {
+                var oDate = new Date()
+                this.setState({
+                    h:oDate.getHours(),
+                    m:oDate.getMinutes(),
+                    s:oDate.getSeconds()
+                })
+            }
+
+            componentWillMount() {
+                console.log("componentWillMount")
+            }
+
+            componentDidMount() {
+                console.log("componentDidMount")
+                this.tick()
+            }
+
+            componentWillUpdate() {
+                console.log("componentWillUpdate")
+            }
+
+            componentDidUpdate() {
+                console.log("componentDidUpdate")
+            }
+
+            componentWillUnMount() {
+                console.log("componentWillUnmount")
+            }
+           
+            render() {
+                return <div>
+                    <span> {this.state.h} </span>
+                    <span> {this.state.m} </span>
+                    <span> {this.state.s} </span>
+                </div>
+            }
+        }
+
+        window.onload=function() {
+            var oDiv = document.getElementById("app")
+
+            var i = 0
+
+            document.onclick = function () {
+                i ++
+                if (i%2) {
+                    ReactDOM.render(
+                        <span> Such a short life </span>,
+                        oDiv
+                    )
+                } else {
+                    ReactDOM.render(
+                        <Clock />,
+                        oDiv
+                    )
+                }
+            }
+        }
+    </script> -->
+
+    <!-- <script type="text/babel">
+        class Title extends React.Component {
+
+            constructor(...args) {
+                super(...args)
+
+                this.state={color:"black"}
+            }
+
+            fn() {
+                this.refs['s1'].style.color = 'red'
+                // $(this.refs['s1']).css('color', 'red')
+            }
+
+            render() {
+                return <div>
+                    <input type="button" value="click" onClick={this.fn.bind(this)} />
+                    <span ref="s1"> aaa </span>
+                </div>
+            }
+        }
+
+        $(function (){
+            ReactDOM.render(
+                <Title />,
+                $("#app")[0]
+                // document.getElementById("app")
+            )
+        })
+    </script> -->
+
+    <style media="screen">
+        .box {width:200px}
+    </style>
+
+    <script type="text/babel">
+        class Drag extends React.Component {
+
+            constructor(...args) {
+                super(...args)
+
+                this.state = {x: 0, y : 0}
+            }
+
+            fn(ev) {
+                var disX = ev.pageX - this.state.x
+                var disY = ev.pageY - this.state.y
+
+                var that = this
+
+                document.onmousemove=function (ev) {
+                    that.setState({
+                        x: ev.pageX - disX, y: ev.pageY - disY
+                    })
+                }
+                console.log(this.state)
+            }
+
+
+            render() {
+                return <div className="box" 
+                style={{left:this.state.x + 'px', top:this.state.y + 'px', background: 'cyan'}} onMouseDown={this.fn.bind(this)}>
+                    123
+                </div>
+            }
+        }
+
+        $(function (){
+            ReactDOM.render(
+                <Drag />,
+                $("#app")[0]
+                // document.getElementById("app")
+            )
+        })
+    </script>
+
+  </head>
+ <body>
+     <div id="app"></div>
+ </body>
+   
+</html>

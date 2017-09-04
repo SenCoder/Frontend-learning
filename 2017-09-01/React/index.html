@@ -1,0 +1,110 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React 实例</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+
+    <!-- <script type="text/babel">
+        class ChildComponent extends React.Component {
+
+            componentWillReceiveProps() {
+                console.log("compnentWillReceiveProps")
+            }
+
+            constructor(...args) {
+                // 必须调用 super() 方法
+                super(...args)
+            }
+
+            render() {
+                return <div>
+                    <span> {this.props.name} </span>
+                </div>
+            }
+        }
+
+        class ParentComponent extends React.Component {
+            constructor(...args) {
+                // 必须调用 super() 方法
+                super(...args)
+                // 初始化可以直接赋值
+                this.state = {i: 0}
+            }
+
+            fn() {
+                this.setState({i: this.state.i + 1})
+            }
+
+            render() {
+                return <div>
+                    <input type="button" vaule="click" onClick={this.fn.bind(this)}/>
+                    <ChildComponent name={this.state.i} />
+                </div>
+            }
+        }
+
+        window.onload=function() {
+            ReactDOM.render(
+                <ParentComponent />,
+                document.getElementById("app")
+            )
+        }
+    </script> -->
+
+    <script type="text/babel">
+
+        class Item extends React.Component {
+            constructor(...args) {
+                super(...args)
+            }
+
+            render() {
+                return <li>{this.props.value}</li>
+            }
+        }
+
+        class List extends React.Component {
+            constructor(...args) {
+                super(...args)
+                this.state = {arr : [1,3,5,7]}
+            }
+
+            fn() {
+                this.setState(
+                    {arr: this.state.arr.concat([Math.random()])}
+                )
+            }
+
+            render() {
+                var result = []
+                var arr = this.state.arr
+
+                for (var i = 0; i < arr.length; i ++) {
+                    result.push(<Item key={i} value={arr[i]}/>)
+                }
+
+                return <div>
+                    <input type="button" onClick={this.fn.bind(this)} />
+                    <ul>{result}</ul>
+                </div>
+            }
+        }
+
+        window.onload=function() {
+            ReactDOM.render(
+                <List />,
+                document.getElementById("app")
+            )
+        }
+
+    </script>
+
+  </head>
+ <body>
+     <div id="app"></div>
+ </body>
+   
+</html>

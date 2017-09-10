@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React 实例</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+
+    <script type="text/babel">
+
+        // class Title extends React.Component {
+
+        //     constructor(...args) {
+        //         super(...args)
+
+        //         this.state={color:"black"}
+        //     }
+
+        //     fn() {
+        //         this.setState({
+        //             color:'red'
+        //         })
+        //     }
+
+        //     render() {
+        //         return <div>
+        //             <input type="button" value="click" onClick={this.fn.bind(this)} />
+        //             <span style={{color:this.state.color}}> aaa </span>
+        //         </div>
+        //     }
+        // }
+
+        // $(function() {
+        //     ReactDOM.render(
+        //         <Title />,
+        //         $('#app')[0]
+        //     )
+        // })
+
+        // window.onload=function() {
+        //     ReactDOM.render(
+        //         <List />,
+        //         document.getElementById("app")
+        //     )
+        // }
+
+        class Title extends React.Component {
+
+            constructor(...args) {
+                super(...args)
+
+                // this.state={color:"black"}
+            }
+
+            fn() {
+                // alert(this.refs['s1'])
+
+                // var oS = this.refs['s1']
+                // oS.style.color = 'red'
+
+                $(this.refs['s1']).css('color', 'red')
+            }
+
+            render() {
+                return <div>
+                    <input type="button" value="click" onClick={this.fn.bind(this)} />
+                    <span ref="s1"> aaa </span>
+                </div>
+            }
+        }
+
+        $(function() {
+            ReactDOM.render(
+                <Title />,
+                $('#app')[0]
+            )
+        })
+    </script>
+
+  </head>
+ <body>
+     <div id="app"></div>
+ </body>
+   
+</html>

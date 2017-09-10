@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+
+     <style media="screen">
+        img {margin:200px;width:400px;height:400px}
+    </style> 
+
+    <title>React 实例</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+
+    <script type="text/babel">
+
+
+        class Comp extends React.Component {
+            // 事件冒泡
+            constructor(...args) {
+                super(...args)
+            }
+
+            fn1() {
+                alert('parent')
+            }
+
+            // 非原生 event !!!
+            // 停止冒泡
+            fn2(ev) {
+                alert('child')
+                ev.nativeEvent.stopImmediatePropagation()
+            }
+
+            render() {
+                return <div onClick={this.fn1.bind(this)}>
+                    <div1 onClick={this.fn2.bind(this)}> aaa </div1>
+                </div>
+            }
+        }
+
+        $(function (){
+            ReactDOM.render(
+                <Comp />,
+                $("#app")[0]
+                // document.getElementById("app")
+            )
+
+        })
+    </script>
+
+  </head>
+ <body>
+    <div id="app"></div> 
+ </body>
+   
+</html>

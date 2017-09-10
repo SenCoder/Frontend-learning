@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+
+     <style media="screen">
+        img {margin:200px;width:400px;height:400px}
+    </style> 
+
+    <title>React 实例</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+
+    <script type="text/babel">
+
+        class LoginForm extends React.Component {
+
+            constructor(...args) {
+                super(...args)
+            }
+
+            // 表单的坑
+            // 使用 defaultValue, 否则无法修改
+            // 使用 defaultChecked, 否则无法修改
+            render() {
+                return <form action="http://rd.tclking.com" method="get">
+                Username: <input type="text" name="username" defaultValue={this.props.a}/>
+                <input type="submit" value="subbmit" />
+                <br/>
+                是否接收邮件: <input type="checkbox" defaultChecked="true" />
+                </form>
+            }
+        }
+
+        $(function (){
+            ReactDOM.render(
+                <LoginForm a="blue"/>,
+                $("#app")[0]
+                // document.getElementById("app")
+            )
+
+        })
+    </script>
+
+  </head>
+ <body>
+    <div id="app"></div> 
+ </body>
+   
+</html>

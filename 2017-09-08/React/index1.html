@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+
+     <style media="screen">
+        img {margin:200px;width:400px;height:400px}
+    </style> 
+
+    <title>React 实例</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+
+    <script type="text/babel">
+
+        class LazyLoad extends React.Component {
+
+            constructor(...args) {
+                super(...args)
+                // alert(this.props.imgs)
+
+                this.imagepath=this.props.imgs.split(',')
+
+                var that = this
+
+                window.onscroll = function() {
+                    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+                    console.log(scrollTop)
+
+                    // 原生 js
+                    that.refs.['div1'].children
+
+                }
+            }
+
+            render() {
+                var arr = []
+                for (var i = 0; i < this.imagepath.length; i ++) {
+                    arr.push(<img _src={this.imagepath[i]} alt="logo" />)
+                }
+                return <div ref='div1'> {arr} </div>
+            }
+        }
+
+        $(function (){
+            ReactDOM.render(
+                <LazyLoad imgs = "logo.png,logo1.png,logo2.png" />,
+                $("#app")[0]
+                // document.getElementById("app")
+            )
+
+        })
+    </script>
+
+  </head>
+ <body>
+    <div id="app"></div> 
+ </body>
+   
+</html>

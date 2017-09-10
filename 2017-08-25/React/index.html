@@ -133,12 +133,14 @@
                 this.state = {x: 0, y : 0}
             }
 
+            // ev 非原生
             fn(ev) {
                 var disX = ev.pageX - this.state.x
                 var disY = ev.pageY - this.state.y
 
                 var that = this
 
+                // ev 原生
                 document.onmousemove=function (ev) {
                     that.setState({
                         x: ev.pageX - disX, y: ev.pageY - disY
@@ -150,6 +152,14 @@
                     document.onmousemove=null;
                     document.onmouseup=null;
                 };
+            }
+
+            componentDidMount() {
+                var oDiv=this.refs['app']
+
+                oDiv.onmousedown = function() {
+                    
+                }
             }
 
             render() {

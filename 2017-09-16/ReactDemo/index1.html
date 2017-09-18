@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React 实例</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+
+    <script type="text/babel">
+
+        class Child extends React.Component {
+            constructor(...args) {
+                super(...args)
+
+                this.num = 555
+            }
+
+            render() {
+                // 通过回掉函数向父组件传递消息
+                this.props.cb(this.num)
+                // alert(this.props.cb)
+                return <div>
+                   {this.props.a}
+                </div>
+            }
+        }
+
+        class Parent extends React.Component {
+            constructor(...args) {
+                super(...args)
+                this.a = 1111
+            }
+
+            fn(num) {
+                alert(num)
+                alert('asdf')
+            }
+
+            render() {
+                // 向子组件传递消息
+                return <div>
+                    <div> aaaaa</div>
+                    <Child cb={this.fn.bind(this)} a={this.a}/>
+                </div>
+            }
+        }
+
+        window.onload=function() {
+            ReactDOM.render(
+                <Parent />,
+                document.getElementById("app")
+            )
+        }
+
+    </script>
+
+  </head>
+ <body>
+     <div id="app"></div>
+ </body>
+   
+</html>

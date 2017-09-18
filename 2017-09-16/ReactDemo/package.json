@@ -1,0 +1,27 @@
+{
+  "name": "seact",
+  "version": "1.0.0",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "peter",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "antd": "^2.13.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babelify": "^7.3.0",
+    "css-loader": "^0.28.7",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-mixin": "^2.0.2",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.5.6",
+    "webpack-dev-server": "^2.7.1"
+  }
+}
